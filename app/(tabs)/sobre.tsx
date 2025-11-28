@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 export default function Sobre() {
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Sobre mim</Text>
+      <Text style={styles.title}>Mais sobre mim</Text>
 
       <View style={styles.card}>
         <Text style={styles.text}>

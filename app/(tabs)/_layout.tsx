@@ -11,8 +11,8 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: "#e0e7ff",
           borderTopWidth: 0,
-          height: 70,           // antes 60
-          paddingBottom: 14,    // antes 5 → levanta os botões
+          height: 70,
+          paddingBottom: 14,
           paddingTop: 8,
         },
       }}

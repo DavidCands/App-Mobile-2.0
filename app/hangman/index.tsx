@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { Svg, Line, Circle } from "react-native-svg";
+import { useNavigation } from "expo-router";
 
 const WORDS = [
   "BULBASAUR","IVYSAUR","VENUSAUR","CHARMANDER","CHARMELEON","CHARIZARD",
@@ -59,6 +60,14 @@ export default function HangmanPage() {
     const newWrong = newGuessed.filter((l) => !letters.includes(l)).length;
     setWrong(newWrong);
   }
+
+    const navigation = useNavigation();
+    
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerShown: false,
+        });
+    }, [navigation]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

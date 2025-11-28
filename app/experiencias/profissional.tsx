@@ -1,6 +1,16 @@
 import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { useNavigation } from "expo-router";
+import { useLayoutEffect } from "react";
 
 export default function ExperienciaProfissional() {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Experiência Profissional</Text>
