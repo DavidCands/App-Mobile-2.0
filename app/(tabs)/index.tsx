@@ -1,98 +1,175 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import { Link } from "expo-router";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
-export default function HomeScreen() {
+export default function Home() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <ScrollView style={styles.container}>
+      <View style={styles.card}>
+        <View style={styles.left}>
+          <Image
+            source={require("../assets/images/minha-foto.jpg")}
+            style={styles.avatar}
+          />
+        </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <View style={styles.right}>
+          <Text style={styles.title}>David Cândido de Souza</Text>
+
+          <Text style={styles.bio}>
+            Sou um estudante do curso de Ciência da Computação da Universidade Católica,
+            gosto de programar e estou sempre em busca de aprender algo novo. Gosto de
+            transformar ideias em projetos práticos e explorar diferentes áreas da computação.
+            Segue abaixo algumas das linguagens e tecnologias que já utilizei:
+          </Text>
+
+          <View style={styles.skills}>
+            {["C", "JavaScript", "React", "Next.js", "CSS", "Java", "Python"].map((skill) => (
+              <Text key={skill} style={styles.skillItem}>
+                {skill}
+              </Text>
+            ))}
+          </View>
+
+          <Link href="/hangman" asChild>
+            <TouchableOpacity style={styles.cta}>
+              <Text style={styles.ctaText}>Ir para o Jogo da Forca</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+      </View>
+
+      <View style={styles.projects}>
+        <Text style={styles.projectsTitle}>Projetos</Text>
+
+        <View style={styles.projectGrid}>
+          <View style={styles.project}>
+            <Text style={styles.projectTitle}>Sistema de Clínica (Java)</Text>
+            <Text style={styles.projectText}>
+              Gerenciamento de consultas e usuários, com lógica para agendamentos e descontos no Projeto do Restaurante.
+            </Text>
+          </View>
+
+          <View style={styles.project}>
+            <Text style={styles.projectTitle}>Pedidos para Restaurante (Java)</Text>
+            <Text style={styles.projectText}>
+              Aplicação de gerenciamento para controle de pedidos, escolha da mesa,
+              remoção de quantidades de itens e cálculo automático de valor total
+              e descontos com base se o cliente é cadastrado como um Médico da Clínica.
+            </Text>
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  container: {
+    flex: 1,
+    backgroundColor: "#f4f6f9",
+    padding: 20,
+  },
+
+  card: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 20,
+    gap: 20,
+    elevation: 4,
+  },
+
+  left: {
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
+
+  avatar: {
+    width: 180,
+    height: 180,
+    borderRadius: 100,
+    borderWidth: 4,
+    borderColor: "#4f46e5",
+  },
+
+  right: {
+    flex: 2,
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#4f46e5",
+    marginBottom: 10,
+  },
+
+  bio: {
+    fontSize: 16,
+    marginBottom: 15,
+    color: "#333",
+  },
+
+  skills: {
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
+
+  skillItem: {
+    backgroundColor: "#e0e7ff",
+    color: "#4338ca",
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 6,
+    fontSize: 14,
+  },
+
+  cta: {
+    marginTop: 20,
+    backgroundColor: "#4f46e5",
+    padding: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  ctaText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+
+  projects: {
+    marginTop: 30,
+  },
+
+  projectsTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#ff9a03",
+    marginBottom: 15,
+  },
+
+  projectGrid: {
+    gap: 20,
+  },
+
+  project: {
+    backgroundColor: "#fff",
+    padding: 18,
+    borderRadius: 10,
+    elevation: 3,
+  },
+
+  projectTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#4f46e5",
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  projectText: {
+    color: "#333",
+    fontSize: 15,
   },
 });
