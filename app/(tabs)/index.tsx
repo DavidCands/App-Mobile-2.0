@@ -3,41 +3,39 @@ import { Link } from "expo-router";
 
 export default function Home() {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
+      
       <View style={styles.card}>
-        <View style={styles.left}>
-          <Image
-            source={require("../assets/images/minha-foto.jpg")}
-            style={styles.avatar}
-          />
+        <Image
+          source={require("../../assets/images/minha-foto.jpg")}
+          style={styles.avatar}
+        />
+
+        <Text style={styles.title}>David Cândido de Souza</Text>
+
+        <Text style={styles.bio}>
+          Sou um estudante do curso de Ciência da Computação da Universidade Católica,
+          gosto de programar e estou sempre em busca de aprender algo novo. Gosto de
+          transformar ideias em projetos práticos e explorar diferentes áreas da computação.
+          Segue abaixo algumas das linguagens e tecnologias que já utilizei:
+        </Text>
+
+        <View style={styles.skills}>
+          {["C", "JavaScript", "React", "Next.js", "CSS", "Java", "Python"].map((skill) => (
+            <Text key={skill} style={styles.skillItem}>
+              {skill}
+            </Text>
+          ))}
         </View>
 
-        <View style={styles.right}>
-          <Text style={styles.title}>David Cândido de Souza</Text>
-
-          <Text style={styles.bio}>
-            Sou um estudante do curso de Ciência da Computação da Universidade Católica,
-            gosto de programar e estou sempre em busca de aprender algo novo. Gosto de
-            transformar ideias em projetos práticos e explorar diferentes áreas da computação.
-            Segue abaixo algumas das linguagens e tecnologias que já utilizei:
-          </Text>
-
-          <View style={styles.skills}>
-            {["C", "JavaScript", "React", "Next.js", "CSS", "Java", "Python"].map((skill) => (
-              <Text key={skill} style={styles.skillItem}>
-                {skill}
-              </Text>
-            ))}
-          </View>
-
-          <Link href="/hangman" asChild>
-            <TouchableOpacity style={styles.cta}>
-              <Text style={styles.ctaText}>Ir para o Jogo da Forca</Text>
-            </TouchableOpacity>
-          </Link>
-        </View>
+        <Link href="/hangman" asChild>
+          <TouchableOpacity style={styles.cta}>
+            <Text style={styles.ctaText}>Ir para o Jogo da Forca</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
 
+      {/* PROJETOS */}
       <View style={styles.projects}>
         <Text style={styles.projectsTitle}>Projetos</Text>
 
@@ -53,12 +51,12 @@ export default function Home() {
             <Text style={styles.projectTitle}>Pedidos para Restaurante (Java)</Text>
             <Text style={styles.projectText}>
               Aplicação de gerenciamento para controle de pedidos, escolha da mesa,
-              remoção de quantidades de itens e cálculo automático de valor total
-              e descontos com base se o cliente é cadastrado como um Médico da Clínica.
+              remoção de quantidades de itens e cálculo automático de valor total e descontos com base se o cliente é cadastrado como Médico da Clínica.
             </Text>
           </View>
         </View>
       </View>
+
     </ScrollView>
   );
 }
@@ -67,70 +65,66 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f4f6f9",
-    padding: 20,
+    padding: 18,
   },
 
   card: {
-    flexDirection: "row",
     backgroundColor: "#fff",
-    borderRadius: 12,
+    borderRadius: 14,
     padding: 20,
-    gap: 20,
+    alignItems: "center",
     elevation: 4,
   },
 
-  left: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-  },
-
   avatar: {
-    width: 180,
-    height: 180,
+    width: 150,
+    height: 150,
     borderRadius: 100,
     borderWidth: 4,
     borderColor: "#4f46e5",
-  },
-
-  right: {
-    flex: 2,
+    marginBottom: 15,
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: "bold",
     color: "#4f46e5",
+    textAlign: "center",
     marginBottom: 10,
   },
 
   bio: {
-    fontSize: 16,
-    marginBottom: 15,
+    fontSize: 15,
     color: "#333",
+    textAlign: "center",
+    marginBottom: 15,
+    lineHeight: 22,
   },
 
   skills: {
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
     gap: 8,
+    marginBottom: 20,
   },
 
   skillItem: {
     backgroundColor: "#e0e7ff",
     color: "#4338ca",
     paddingVertical: 6,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     borderRadius: 6,
     fontSize: 14,
   },
 
   cta: {
-    marginTop: 20,
     backgroundColor: "#4f46e5",
-    padding: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
     borderRadius: 10,
     alignItems: "center",
+    width: "100%",
   },
 
   ctaText: {
@@ -140,7 +134,7 @@ const styles = StyleSheet.create({
   },
 
   projects: {
-    marginTop: 30,
+    marginTop: 35,
   },
 
   projectsTitle: {
@@ -148,6 +142,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#ff9a03",
     marginBottom: 15,
+    textAlign: "center",
   },
 
   projectGrid: {
@@ -171,5 +166,6 @@ const styles = StyleSheet.create({
   projectText: {
     color: "#333",
     fontSize: 15,
+    lineHeight: 22,
   },
 });
