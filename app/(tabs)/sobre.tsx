@@ -18,7 +18,7 @@ export default function Sobre() {
         </Text>
 
         <Text style={styles.text}>
-          Meu objetivo é me tornar um bom desenvolvedor, explorando
+          Meu objetivo é me tornar um ótimo desenvolvedor, como o meu irmão mais velho, explorando
           diferentes áreas da computação e buscando sempre novos desafios.
         </Text>
       </View>

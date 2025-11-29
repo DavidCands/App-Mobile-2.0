@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigation } from "expo-router";
 import { useLayoutEffect } from "react";
+import { Link } from "expo-router";
 
 export default function ExperienciaProfissional() {
   const navigation = useNavigation();
@@ -31,6 +32,11 @@ export default function ExperienciaProfissional() {
           cada vez mais completos para construir uma base sólida para futuras oportunidades.
         </Text>
       </View>
+        <Link href="/" asChild>
+            <TouchableOpacity style={styles.homeButton}>
+                <Text style={styles.homeButtonText}>Voltar para Home</Text>
+            </TouchableOpacity>
+        </Link>
     </ScrollView>
   );
 }
@@ -62,5 +68,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#333",
     lineHeight: 22,
+  },
+
+  homeButton: {
+    marginTop: 30,
+    backgroundColor: "#4f46e5",
+    padding: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  homeButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

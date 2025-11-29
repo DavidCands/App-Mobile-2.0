@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigation } from "expo-router";
 import { useLayoutEffect } from "react";
+import { Link } from "expo-router";
 
 export default function ExperienciaAcademica() {
     const navigation = useNavigation();
@@ -12,12 +13,12 @@ export default function ExperienciaAcademica() {
     }, [navigation]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 50 }}>
       <Text style={styles.title}>Experiência Acadêmica</Text>
 
       <View style={styles.card}>
         <Text style={styles.infoText}>
-          Durante minha jornada no curso de Ciência da Computação, tive a oportunidade
+          Durante o meu curso, tive a oportunidade
           de participar de diversos projetos que fortaleceram minhas habilidades práticas
           e meu raciocínio lógico.
         </Text>
@@ -44,6 +45,11 @@ export default function ExperienciaAcademica() {
           extremamente enriquecedora e importante para meu crescimento profissional.
         </Text>
       </View>
+        <Link href="/" asChild>
+            <TouchableOpacity style={styles.homeButton}>
+                <Text style={styles.homeButtonText}>Voltar para Home</Text>
+            </TouchableOpacity>
+        </Link>
     </ScrollView>
   );
 }
@@ -82,5 +88,19 @@ const styles = StyleSheet.create({
     color: "#4338ca",
     lineHeight: 22,
     paddingLeft: 10,
+  },
+
+  homeButton: {
+    marginTop: 30,
+    backgroundColor: "#4f46e5",
+    padding: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  homeButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

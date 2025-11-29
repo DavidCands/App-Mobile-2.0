@@ -1,10 +1,11 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "expo-router";
-import { useLayoutEffect } from "react";    
+import { useLayoutEffect } from "react";
+import { Link } from "expo-router";
 
 export default function Projetos() {
     const navigation = useNavigation();
-    
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -38,6 +39,12 @@ export default function Projetos() {
           animações simples e estados reativos, na qual explora os diversos tipos de Pokémon para adivinhação.
         </Text>
       </View>
+
+    <Link href="/" asChild>
+        <TouchableOpacity style={styles.homeButton}>
+            <Text style={styles.homeButtonText}>Voltar para Home</Text>
+        </TouchableOpacity>
+    </Link>
     </ScrollView>
   );
 }
@@ -75,5 +82,19 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#333",
     lineHeight: 20,
+  },
+
+  homeButton: {
+    marginTop: 30,
+    backgroundColor: "#4f46e5",
+    padding: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  homeButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

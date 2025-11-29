@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { Svg, Line, Circle } from "react-native-svg";
 import { useNavigation } from "expo-router";
+import { Link } from "expo-router";
 
 const WORDS = [
   "BULBASAUR","IVYSAUR","VENUSAUR","CHARMANDER","CHARMELEON","CHARIZARD",
@@ -178,6 +179,13 @@ export default function HangmanPage() {
         <Text>• Digite uma letra ou use o teclado.</Text>
         <Text>• Reinicie para jogar novamente.</Text>
       </View>
+
+        <Link href="/" asChild>
+            <TouchableOpacity style={styles.homeButton}>
+                <Text style={styles.homeButtonText}>Voltar para Home</Text>
+            </TouchableOpacity>
+        </Link>
+
     </ScrollView>
   );
 }
@@ -314,4 +322,18 @@ const styles = StyleSheet.create({
 
   correct: { color: "#51be5a" },
   wrong: { color: "#c93d3d" },
+
+  homeButton: {
+    marginTop: 30,
+    backgroundColor: "#4f46e5",
+    padding: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+
+  homeButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
