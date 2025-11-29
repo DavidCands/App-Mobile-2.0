@@ -50,6 +50,12 @@
         "projectId": "a5f24a06-b509-40a0-b231-1d8f9c39568c"
       }
     },
-    "owner": "davidcands"
+    "owner": "davidcands",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/a5f24a06-b509-40a0-b231-1d8f9c39568c"
+    }
   }
 }
